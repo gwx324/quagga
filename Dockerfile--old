@@ -1,0 +1,15 @@
+FROM ewindisch/quagga
+MAINTAINER Weitao Han <weitaohan.cn@gmail.com>
+
+RUN apt-get update; apt-get upgrade -y
+RUN apt-get install -y inetutils-ping tcpdump traceroute net-tools openssh-server vim
+RUN apt-get install -y openbsd-inetd telnetd
+
+RUN echo "telnet stream tcp nowait root /usr/sbin/tcpd /usr/sbin/in.telnetd" >> /etc/inetd.conf
+
+COPY config_empty/* /etc/quagga/
+RUN chown -R quagga /etc/quagga
+
+ENTRYPOINT ["/etc/init.d/openbsd-inetd", "start", "-D"]
+
+
