@@ -32,4 +32,4 @@ ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 EXPOSE 22 23 161 162
-ENTRYPOINT service openbsd-inetd start && /usr/sbin/sshd -D	
+ENTRYPOINT service openbsd-inetd start && service snmpd start && /usr/sbin/sshd -D	
