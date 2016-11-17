@@ -3,7 +3,8 @@ MAINTAINER Weitao Han <weitaohan.cn@gmail.com>
 
 RUN apt-get update
 RUN apt-get upgrade -y
-RUN apt-get install -y inetutils-ping tcpdump traceroute net-tools vim python openssh-server openbsd-inetd telnetd snmp snmpd nano ethtool
+
+RUN apt-get install -y inetutils-ping tcpdump traceroute net-tools vim python openssh-server openbsd-inetd telnetd snmp snmpd nano ethtool libpcap-dev python-pypcap
 
 ENV PATH "/usr/lib/quagga/:/sbin:/bin:/usr/sbin:/usr/bin"
 
